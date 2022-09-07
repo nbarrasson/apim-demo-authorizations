@@ -45,7 +45,7 @@ function App() {
         variables: {},
       });
 
-      await axios.post(`${APIM_SERVICE_URL}/github`, data),config.then((response) => {
+      await axios.post(`${APIM_SERVICE_URL}` + "/github", data),config.then((response) => {
         console.log(response);
         setCommentUrl(response.data.data.addDiscussionComment.comment.url);
         setLoaded(true);
