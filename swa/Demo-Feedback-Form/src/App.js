@@ -27,7 +27,6 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log(APIM_SERVICE_SUBSCRIPTION_KEY)
       setLoaded(false);
       setSuccess(false);
       const config = {
@@ -46,9 +45,7 @@ function App() {
       }`,
         variables: {},
       });
-      console.log(config);
       const response = await axios.post('/github', data, config);
-      console.log(response);
       setCommentUrl(response.data.data.addDiscussionComment.comment.url);
       setSuccess(true);
     } catch (error) {
