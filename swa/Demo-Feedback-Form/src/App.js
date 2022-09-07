@@ -27,6 +27,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log(APIM_SERVICE_SUBSCRIPTION_KEY)
       setLoaded(false);
       setSuccess(false);
       const config = {
