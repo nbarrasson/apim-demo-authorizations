@@ -21,7 +21,7 @@ function App() {
   const [loaded, setLoaded] = useState(true);
   const [success, setSuccess] = useState(false);
   
-  const APIM_SERVICE_URL = process.env.APIM_SERVICE_URL;
+  const APIM_SERVICE_URL = "https://apim-nibarras.azure-api.net";
   const APIM_SERVICE_SUBSCRIPTION_KEY = process.env.APIM_SERVICE_SUBSCRIPTION_KEY;  
 
   const handleSubmit = async (e) => {
@@ -32,7 +32,7 @@ function App() {
       const config = {
         baseURL: APIM_SERVICE_URL,
         headers: {
-          "Ocp-Apim-Subscription-Key": {APIM_SERVICE_SUBSCRIPTION_KEY},
+          "Ocp-Apim-Subscription-Key": APIM_SERVICE_SUBSCRIPTION_KEY,
         },
       };
       var data = JSON.stringify({
