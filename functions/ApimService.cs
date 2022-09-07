@@ -23,7 +23,7 @@ namespace MyAmbassadorDemo.Function
             _subscriptionKey = subscriptionKey;
             _httpClient = new HttpClient();
             _httpClient.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
-            _githubGraphQLClient = new GraphQLHttpClient(_baseUrl + "/github", new NewtonsoftJsonSerializer());
+            _githubGraphQLClient = new GraphQLHttpClient(_baseUrl, new NewtonsoftJsonSerializer());
             _githubGraphQLClient.HttpClient.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", _subscriptionKey);
         }
 
