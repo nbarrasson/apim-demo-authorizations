@@ -21,8 +21,8 @@ function App() {
   const [loaded, setLoaded] = useState(true);
   const [success, setSuccess] = useState(false);
   
-  const APIM_URL = process.env.APIM_URL;
-  const APIM_KEY = process.env.APIM_KEY;  
+  const APIM_SERVICE_URL = process.env.APIM_SERVICE_URL;
+  const APIM_SERVICE_SUBSCRIPTION_KEY = process.env.APIM_SERVICE_SUBSCRIPTION_KEY;  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,7 +31,7 @@ function App() {
       setSuccess(false);
       const config = { 
         headers: {
-          "Ocp-Apim-Subscription-Key": {APIM_KEY},
+          "Ocp-Apim-Subscription-Key": {APIM_SERVICE_SUBSCRIPTION_KEY},
         },
       };
       var data = JSON.stringify({
@@ -45,7 +45,7 @@ function App() {
         variables: {},
       });
 
-      await axios.post(`${APIM_URL}/github`, data),config.then((response) => {
+      await axios.post(`${APIM_SERVICE_URL}/github`, data),config.then((response) => {
         console.log(response);
         setCommentUrl(response.data.data.addDiscussionComment.comment.url);
         setLoaded(true);
