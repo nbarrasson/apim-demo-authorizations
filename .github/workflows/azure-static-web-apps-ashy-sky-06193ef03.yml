@@ -31,8 +31,8 @@ jobs:
           api_location: "" # Api source code path - optional
           output_location: "build" # Built app content directory - optional
         env: # Add environment variables here
-          APIM_SERVICE_URL: ${{ secrets.APIM_SERVICE_URL }}
-          APIM_SERVICE_SUBSCRIPTION_KEY: ${{ secrets.APIM_SERVICE_SUBSCRIPTION_KEY }}
+          REACT_APP_APIM_SERVICE_URL: ${{ secrets.APIM_SERVICE_URL }}
+          REACT_APP_APIM_SERVICE_SUBSCRIPTION_KEY: ${{ secrets.APIM_SERVICE_SUBSCRIPTION_KEY }}
 
           ###### End of Repository/Build Configurations ######
 

@@ -21,8 +21,8 @@ function App() {
   const [loaded, setLoaded] = useState(true);
   const [success, setSuccess] = useState(false);
   
-  const APIM_SERVICE_URL = "https://apim-nibarras.azure-api.net";
-  const APIM_SERVICE_SUBSCRIPTION_KEY = process.env.APIM_SERVICE_SUBSCRIPTION_KEY;  
+  const APIM_SERVICE_URL = process.env.REACT_APP_APIM_SERVICE_URL;
+  const APIM_SERVICE_SUBSCRIPTION_KEY = process.env.REACT_APP_APIM_SERVICE_SUBSCRIPTION_KEY;  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
