@@ -30,9 +30,13 @@ function App() {
       setLoaded(false);
       setSuccess(false);
       const config = { 
+        protocol: "https",
+        host: {APIM_SERVICE_URL},
+        path: "/github",
+        method: "POST",
         headers: {
           "Ocp-Apim-Subscription-Key": {APIM_SERVICE_SUBSCRIPTION_KEY},
-        },
+        }
       };
       var data = JSON.stringify({
         query: `mutation {
@@ -46,7 +50,13 @@ function App() {
       });
 
   // send the request to APIM
-      const response = await axios.post(APIM_SERVICE_URL, data, config);
+      const response = await axios.post(
+        `${config.protocol}://${config.host}${config.path}`,
+        data,
+        {
+          headers: config.headers,
+        }
+      );
       setCommentUrl(response.data.data.addDiscussionComment.comment.url);
       setSuccess(true);
     } catch (error) {
@@ -54,6 +64,16 @@ function App() {
     } finally {
       setLoaded(true);
     }
+  };
+  
+    //   const response = await axios.post(APIM_SERVICE_URL, data, config);
+    //   setCommentUrl(response.data.data.addDiscussionComment.comment.url);
+    //   setSuccess(true);
+    // } catch (error) {
+    //   console.log(error);
+    // } finally {
+    //   setLoaded(true);
+    // }
   };
   
   //     await axios.post(`${APIM_SERVICE_URL}`, data),config.then((response) => {
