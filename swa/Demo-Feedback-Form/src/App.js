@@ -29,7 +29,8 @@ function App() {
     try {
       setLoaded(false);
       setSuccess(false);
-      const config = { 
+      const config = {
+        baseURL: APIM_SERVICE_URL,
         headers: {
           "Ocp-Apim-Subscription-Key": {APIM_SERVICE_SUBSCRIPTION_KEY},
         },
@@ -45,7 +46,7 @@ function App() {
         variables: {},
       });
 
-      const response = await axios.post(APIM_SERVICE_URL, data, config);
+      const response = await axios.post('/github', data, config);
       setCommentUrl(response.data.data.addDiscussionComment.comment.url);
       setSuccess(true);
     } catch (error) {
