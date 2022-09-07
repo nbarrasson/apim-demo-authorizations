@@ -45,8 +45,9 @@ function App() {
       }`,
         variables: {},
       });
-
+      console.log(config);
       const response = await axios.post('/github', data, config);
+      console.log(response);
       setCommentUrl(response.data.data.addDiscussionComment.comment.url);
       setSuccess(true);
     } catch (error) {
