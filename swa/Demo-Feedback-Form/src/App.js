@@ -21,20 +21,20 @@ function App() {
   const [loaded, setLoaded] = useState(true);
   const [success, setSuccess] = useState(false);
   
-  const APIM_SERVICE_URL = process.env.REACT_APP_APIM_SERVICE_URL;
-  const APIM_SERVICE_SUBSCRIPTION_KEY = process.env.REACT_APP_APIM_SERVICE_SUBSCRIPTION_KEY;  
+  // const APIM_SERVICE_URL = process.env.REACT_APP_APIM_SERVICE_URL;
+  // const APIM_SERVICE_SUBSCRIPTION_KEY = process.env.REACT_APP_APIM_SERVICE_SUBSCRIPTION_KEY;  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       setLoaded(false);
       setSuccess(false);
-      const config = {
-        baseURL: APIM_SERVICE_URL,
-        headers: {
-          "Ocp-Apim-Subscription-Key": APIM_SERVICE_SUBSCRIPTION_KEY,
-        },
-      };
+      // const config = {
+      //   baseURL: APIM_SERVICE_URL,
+      //   headers: {
+      //     "Ocp-Apim-Subscription-Key": APIM_SERVICE_SUBSCRIPTION_KEY,
+      //   },
+      // };
       var data = JSON.stringify({
         query: `mutation {
         addDiscussionComment(input: { body: "${alias} - ${comment}", discussionId: "D_kwDOH885WM4AQqzR" }) {
@@ -45,7 +45,8 @@ function App() {
       }`,
         variables: {},
       });
-      const response = await axios.post('/github', data, config);
+      // const response = await axios.post('/api/github', data, config);
+      const response = await axios.post('/api/github', data);
       setCommentUrl(response.data.data.addDiscussionComment.comment.url);
       setSuccess(true);
     } catch (error) {
