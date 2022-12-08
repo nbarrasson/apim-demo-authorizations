@@ -26,7 +26,7 @@ function App() {
     try {
       setLoaded(false);
       setSuccess(false);
-      let data = JSON.stringify({
+      var data = JSON.stringify({
         query: `mutation {
         addDiscussionComment(input: { body: "${alias} - ${comment}", discussionId: "D_kwDOH885WM4AQqzR" }) {
           comment {
